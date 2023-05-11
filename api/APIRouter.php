@@ -1,9 +1,9 @@
 <?php
-
 // Check for a defined constant or specific file inclusion
 if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die('This file cannot be accessed directly.');
 }
+
 
 require_once __DIR__ . "/CustomersAPI.php";
 require_once __DIR__ . "/AppsAPI.php";
@@ -24,12 +24,11 @@ class APIRouter{
             // will load the CustomersAPI class
             "customers" => "CustomersAPI",
             "apps" => "AppsAPI"
+        
         ];
 
         $this->path_parts = $path_parts;
         $this->query_params = $query_params;
-
-
     }
 
     public function handleRequest(){
