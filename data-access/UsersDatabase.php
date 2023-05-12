@@ -8,22 +8,22 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 // Use "require_once" to load the files needed for the class
 
 require_once __DIR__ . "/Database.php";
-require_once __DIR__ . "/../models/CustomerModel.php";
+require_once __DIR__ . "/../models/UserModel.php";
 
-class CustomersDatabase extends Database
+class UsersDatabase extends Database
 {
-    private $table_name = "customers";
-    private $id_name = "customer_id";
+    private $table_name = "users";
+    private $id_name = "user_id";
 
     // Get one customer by using the inherited function getOneRowByIdFromTable
-    public function getOne($customer_id)
+    public function getOne($user_id)
     {
         
-        $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $customer_id);
+        $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $user_id);
 
-        $customer = $result->fetch_object("CustomerModel");
+        $user = $result->fetch_object("UserModel");
 
-        return $customer;
+        return $user;
     }
 
 
@@ -36,19 +36,18 @@ class CustomersDatabase extends Database
    
         $result = $this->getAllRowsFromTable($this->table_name);
 
-        $customers = [];
+        $user = [];
 
-        while($customer = $result->fetch_object("CustomerModel")){
-            $customers[] = $customer;
+        while($user = $result->fetch_object("UserModel")){
+            $user[] = $user;
         }
 
-        return $customers;
+        return $user;
     }
 
     // Create one by creating a query and using the inherited $this->conn 
-    public function insert(CustomerModel $customer){
-        $query = "INSERT INTO customers (first_name, last_name) VALUES (?, ?)";
-
+    public function insert(UserModel $user){
+        $query = "INSERT INTO users (user_id, user_name, user_password, user_admin) VALUES (?, ?, ?, ?)";
 
          // bereidt een SQL-query voor om te worden uitgevoerd op de database. 
         //De $query parameter bevat de tekst van de query, die wordt voorbereid door 
@@ -57,7 +56,7 @@ class CustomersDatabase extends Database
         //uitslag wordt toegewezen aan $stmt
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("ss", $customer->first_name, $customer->last_name);
+        $stmt->bind_param("issi", $user->user_id, $user->user_name, $user->user_password, $user->user_admin);
 
         $success = $stmt->execute();
 
@@ -65,13 +64,13 @@ class CustomersDatabase extends Database
     }
 
  // Update one by creating a query and using the inherited $this->conn 
- public function updateById($customer_id, CustomerModel $customer)
+ public function updateById($user_id, UserModel $user)
  {
-     $query = "UPDATE customers SET first_name=?, last_name=? WHERE customer_id=?;";
+     $query = "UPDATE users SET user_name=?, user_password=?, user_admin=? WHERE user_id=?;";
 
      $stmt = $this->conn->prepare($query);
 
-     $stmt->bind_param("ssi", $customer->first_name, $customer->last_name, $customer_id);
+     $stmt->bind_param("issi", $user->$user_id, $user->user_name, $user->user_password, $user->user_admin);
 
      $success = $stmt->execute();
 
@@ -79,9 +78,9 @@ class CustomersDatabase extends Database
  }
 
  // Delete one customer by using the inherited function deleteOneRowByIdFromTable
- public function deleteById($customer_id)
+ public function deleteById($user_id)
  {
-     $success = $this->deleteOneRowByIdFromTable($this->table_name, $this->id_name, $customer_id);
+     $success = $this->deleteOneRowByIdFromTable($this->table_name, $this->id_name, $user_id);
 
      return $success;
  }

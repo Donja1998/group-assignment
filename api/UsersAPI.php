@@ -11,7 +11,7 @@ require_once __DIR__ . "/../business-logic/CustomersService.php";
 // Class for handling requests to "api/Customer"
 
 // extend means that it creates a subclass or child that inherits properties and methods
-class CustomersAPI extends RestAPI
+class UsersAPI extends RestAPI
 {
 
     // Handles the request by calling the appropriate member function
@@ -64,18 +64,18 @@ class CustomersAPI extends RestAPI
     // Gets all customers and sends them to the client as JSON
     private function getAll()
     {
-        $customers = CustomersService::getAllCustomers();
+        $users = UsersService::getAllUsers();
 
-        $this->sendJson($customers);
+        $this->sendJson($users);
     }
 
     // Gets one and sends it to the client as JSON
     private function getById($id)
     {
-        $customer = CustomersService::getCustomerById($id);
+        $user = UsersService::getUserById($id);
 
-        if ($customer) {
-            $this->sendJson($customer);
+        if ($user) {
+            $this->sendJson($user);
         } else {
             $this->notFound();
         }
@@ -89,16 +89,18 @@ class CustomersAPI extends RestAPI
         //object oriented programming for assigning customermodel to customer
         // using word new -- making new object with its own set of values
         //by assigning it so customer -> create new reference that can be reused and passed around.
-        $customer = new CustomerModel();
+        $user = new UserModel();
 
         //$customer->customer_id = $this->body["customer_id"];
-        $customer->first_name = $this->body["first_name"];
-        $customer->last_name = $this->body["last_name"];
+        $user->user_name = $this->body["user_name"];
+        $user->user_password = $this->body["user_password"];
+        $user->user_admin = $this->body["user_addmin"];
+
 
         //evoking statis method 'savecustomer' on customerservice' passing the 
         //customer object as a parameter and assigning the return value to variable $succes
 
-        $success = CustomersService::saveCustomer($customer);
+        $success = UsersService::saveUser($user);
 
         if($success){
             $this->created();
@@ -115,12 +117,13 @@ class CustomersAPI extends RestAPI
 
     private function putOne($id)
     {
-        $customer = new CustomerModel();
+        $user = new UserModel();
 
-        $customer->first_name = $this->body["first_name"];
-        $customer->last_name = $this->body["last_name"];
+        $user->user_name = $this->body["user_name"];
+        $user->user_password = $this->body["user_password"];
+        $user->user_admin = $this->body["user_addmin"];
 
-        $success = CustomersService::updateCustomerById($id, $customer);
+        $success = UsersService::updateUserById($id, $user);
 
         if($success){
             $this->ok();
@@ -135,16 +138,16 @@ class CustomersAPI extends RestAPI
     private function deleteOne($id)
     {       
  //finds user vanuit app service and assigned het aan $customer
-        $customer = CustomersService::getCustomerById($id);
+        $user = UsersService::getUserById($id);
 
 
-        if($customer == null){ //als er geen user is gevonden die aansluit naar functie met notfound 
+        if($user == null){ //als er geen user is gevonden die aansluit naar functie met notfound 
 
             $this->notFound();
         }
         //als er wel een user word gevonden dan word de functie deleteappbyid uit de appsservice geroepen om app te verwijderen
 
-        $success = CustomersService::deleteCustomerById($id);
+        $success = UsersService::deleteUserById($id);
 
         if($success){
             $this->noContent();// als het een succes is word de functie no content geroepen --> bevestiging.

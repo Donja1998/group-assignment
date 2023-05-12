@@ -5,8 +5,11 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 }
 
 
-require_once __DIR__ . "/CustomersAPI.php";
-require_once __DIR__ . "/AppsAPI.php";
+require_once __DIR__ . "/UsersAPI.php";
+require_once __DIR__ . "/BlogsAPI.php";
+require_once __DIR__ . "/FavoritessAPI.php";
+require_once __DIR__ . "/MapsAPI.php";
+
 
 // Class for routing all our API requests
 
@@ -22,8 +25,11 @@ class APIRouter{
         $this->routes = [
             // Whenever someone calls "api/Customers" we 
             // will load the CustomersAPI class
-            "customers" => "CustomersAPI",
-            "apps" => "AppsAPI"
+            "users" => "UsersAPI",
+            "blogs" => "BlogsAPI",
+            "favorites" => "BlogsAPI",
+            "maps" => "MapsAPI"
+
         
         ];
 

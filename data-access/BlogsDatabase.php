@@ -8,21 +8,21 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 // Use "require_once" to load the files needed for the class
 
 require_once __DIR__ . "/Database.php";
-require_once __DIR__ . "/../models/AppsModel.php";
+require_once __DIR__ . "/../models/BlogsModel.php";
 
-class appsDatabase extends Database
+class blogsDatabase extends Database
 {
-    private $table_name = "apps";
-    private $id_name = "app_id";
+    private $table_name = "blogs";
+    private $id_name = "blog_id";
 
     // Get one app by using the inherited function getOneRowByIdFromTable
-    public function getOne($app_id)
+    public function getOne($blog_id)
     {
-        $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $app_id);
+        $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $blog_id);
 
-        $apps = $result->fetch_object("AppsModel");
+        $blogs = $result->fetch_object("BlogsModel");
 
-        return $apps;
+        return $blogs;
     }
 
 
@@ -37,22 +37,23 @@ class appsDatabase extends Database
        //$this is special PHP keyword ,  is used inside a class method to refer to the object instance on which the method is being called.
         $result = $this->getAllRowsFromTable($this->table_name);
 
-        $apps = [];
+        $blogs = [];
 
-        while($app = $result->fetch_object("AppsModel")){
-            $apps[] = $app;
+        while($blog = $result->fetch_object("BlogsModel")){
+            $blogs[] = $blog;
         }
 
-        return $apps;
+        return $blogs;
     }
 
     // Create one by creating a query and using the inherited $this->conn 
-    public function insert(AppsModel $app){
-        $query = "INSERT INTO apps (app_id, app_name, description, price) VALUES (?, ?, ?, ?)";
+    public function insert(BlogsModel $blog){
+        $query = "INSERT INTO blogs (blog_id, blog_title, blog_text, latitude, longitude, place_id ) VALUES (?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("issi", $app->app_id, $app->app_name, $app->description, $app->price);
+        $stmt->bind_param("issssi", $blog->blog_id, $blog->blog_title, $blog->blog_text, $blog->latitude, $blog->longitude,$blog->place_id);
+      
 
         $success = $stmt->execute();
 
@@ -60,9 +61,9 @@ class appsDatabase extends Database
     }
 
     // Update one by creating a query and using the inherited $this->conn 
-    public function updateById($app_id, AppsModel $app)
+    public function updateById($blog_id, BlogsModel $blog)
     {
-        $query = "UPDATE apps SET app_name=?, description=?, price=?  WHERE app_id=?;";
+        $query = "UPDATE blogs SET blog_title=?, blog_text=?, latitude=?, longitude=?, place_id=?  WHERE blog_id=?;";
 
 
         // bereidt een SQL-query voor om te worden uitgevoerd op de database. 
@@ -73,7 +74,7 @@ class appsDatabase extends Database
         $stmt = $this->conn->prepare($query);
 
 
-        $stmt->bind_param("ssii", $app->app_name, $app->description, $app->price, $app_id);
+        $stmt->bind_param("issssi", $blog->blog_id, $blog->blog_title, $blog->blog_text, $blog->latitude, $blog->longitude,$blog->place_id);
 
         $success = $stmt->execute();
 
@@ -81,9 +82,9 @@ class appsDatabase extends Database
     }
 
     // Delete one customer by using the inherited function deleteOneRowByIdFromTable
-    public function deleteById($app_id)
+    public function deleteById($blog_id)
     {
-        $success = $this->deleteOneRowByIdFromTable($this->table_name, $this->id_name, $app_id);
+        $success = $this->deleteOneRowByIdFromTable($this->table_name, $this->id_name, $blog_id);
 
         return $success;
     }

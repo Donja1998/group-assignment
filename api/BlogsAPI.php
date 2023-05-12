@@ -6,11 +6,11 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 }
 
 require_once __DIR__ . "/RestAPI.php";
-require_once __DIR__ . "/../business-logic/AppsService.php";
+require_once __DIR__ . "/../business-logic/BlogsService.php";
 
 // Class for handling requests to "api/app"
 
-class AppsAPI extends RestAPI
+class BlogsAPI extends RestAPI
 {
 
     // Handles the request by calling the appropriate member function
@@ -22,7 +22,7 @@ class AppsAPI extends RestAPI
         // it means that the client is requesting "api/Customers" and
         // we should respond by returning a list of all customers 
         if ($this->method == "GET" && $this->path_count == 2) {
-            $this->getAllApps();
+            $this->getAllBlogs();
         } 
 
         // If there's three parts in the path and the request method is GET
@@ -63,21 +63,21 @@ class AppsAPI extends RestAPI
     }
 
     // Gets all customers and sends them to the client as JSON
-    private function getAllApps()
+    private function getAllBlogs()
     {
-        $apps = AppsService::getAllApps();
+        $blogs = BlogsService::getAllBlogs();
         
 
-        $this->sendJson($apps);
+        $this->sendJson($blogs);
     }
 
     // Gets one and sends it to the client as JSON
     private function getById($id)
     {
-        $app = AppsService::getAppById($id);
+        $blog = BlogsService::getBlogById($id);
 
-        if ($app) {
-            $this->sendJson($app);
+        if ($blog) {
+            $this->sendJson($blog);
         } else {
             $this->notFound();
         }
@@ -87,14 +87,17 @@ class AppsAPI extends RestAPI
     // inserting it in the database.
     private function postOne()
     {
-        $app = new AppsModel();
+        $blog = new BlogsModel();
 
        // $app->app_id = $this->body["app_id"];
-        $app->app_name = $this->body["app_name"];
-        $app->description = $this->body["description"];
-        $app->price = $this->body["price"];
+        $blog->blog_title = $this->body["blog_title"];
+        $blog->blog_text = $this->body["blog_text"];
+        $blog->latitude = $this->body["latitude"];
+        $blog->longitude = $this->body["longitude"];
+        $blog->place_id = $this->body["place_id"];
 
-        $success = AppsService::saveApp($app);
+
+        $success = BlogsService::saveBlog($blog);
 
         if($success){
             $this->created();
@@ -109,18 +112,20 @@ class AppsAPI extends RestAPI
     // by sending it to the DB
     private function putOne($id)
     {
-        $app = new AppsModel();
+        $blog = new BlogsModel();
 
                // $app->app_id = $this->body["app_id"];
-        $app->app_name = $this->body["app_name"];
-        $app->description = $this->body["description"];
-        $app->price = $this->body["price"];
+               $blog->blog_title = $this->body["blog_title"];
+               $blog->blog_text = $this->body["blog_text"];
+               $blog->latitude = $this->body["latitude"];
+               $blog->longitude = $this->body["longitude"];
+               $blog->place_id = $this->body["place_id"];
 
 
        // AppsService is the class name, and updateAppsById is the static 
        //method being called. $id and $app are the arguments being passed to the method.
         //:: is a scope operator used to acces statis methods and properties.
-        $success = AppsService::updateAppsById($id, $app);
+        $success = BlogsService::updateBlogById($id, $blog);
 
         if($success){
             $this->ok();
@@ -136,15 +141,15 @@ class AppsAPI extends RestAPI
     private function deleteOne($id)
     {
         //finds app vanuit app service and assigned het aan $app
-        $app = AppsService::getAppById($id);
+        $blog = BlogsService::getBlogById($id);
 
         //als er geen app is gevonden die aansluit naar functie met notfound 
-        if($app == null){
+        if($blog == null){
             $this->notFound();
         }
 
         //als er wel een app word gevonden dan word de functie deleteappbyid uit de appsservice geroepen om app te verwijderen
-        $success = AppsService::deleteAppById($id);
+        $success = BlogsService::deleteBlogById($id);
 
         if($success){
             $this->noContent(); // als het een succes is word de functie no content geroepen --> bevestiging.

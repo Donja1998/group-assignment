@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog post title</title>
+  </head>
+  <body>
+    <h1>Blog post title</h1>
+    <p>Blog post content goes here.</p>
+    
+    <h2>Location</h2>
+    <div id="map" style="height: 400px;"></div>
+    
+    <script>
+      // Replace YOUR_API_KEY with your actual API key
+      var apiKey = "AIzaSyDIYNXpkkxU6KAOOg_358LW4dV0eygUE_M";
+      
+      // Replace LATITUDE and LONGITUDE with your location coordinates
+      var latitude = 52.3702;
+      var longitude = 4.8952;
+      
+      var mapUrl = "https://www.google.com/maps/embed/v1/place?key=" + apiKey + "&q=" + latitude + "," + longitude;
+      
+      // Embed the Google Map using the Maps Embed API
+      var mapDiv = document.getElementById("map");
+      mapDiv.innerHTML = "<iframe src='" + mapUrl + "' width='100%' height='100%' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false' tabindex='0'></iframe>";
+    </script>
+  </body>
+</html>
