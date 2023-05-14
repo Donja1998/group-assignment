@@ -6,12 +6,11 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 }
 
 require_once __DIR__ . "/RestAPI.php";
-require_once __DIR__ . "/../business-logic/UsersService.php";
+require_once __DIR__ . "/../business-logic/FavoritesService.php";
 
-// Class for handling requests to "api/Customer"
+// Class for handling requests to "api/app"
 
-// extend means that it creates a subclass or child that inherits properties and methods
-class UsersAPI extends RestAPI
+class FavoritesAPI extends RestAPI
 {
 
     // Handles the request by calling the appropriate member function
@@ -23,7 +22,7 @@ class UsersAPI extends RestAPI
         // it means that the client is requesting "api/Customers" and
         // we should respond by returning a list of all customers 
         if ($this->method == "GET" && $this->path_count == 2) {
-            $this->getAll();
+            $this->getAllFavorites();
         } 
 
         // If there's three parts in the path and the request method is GET
@@ -41,7 +40,7 @@ class UsersAPI extends RestAPI
             $this->postOne();
         } 
 
-          // If theres two parts in the path and the request method is PUT 
+  // If theres two parts in the path and the request method is PUT 
         // it means that the client is requesting "api/Customers/{something}" and we
         // should get the contents of the body and update the customer.
         else if ($this->path_count == 3 && $this->method == "PUT") {
@@ -54,6 +53,8 @@ class UsersAPI extends RestAPI
         else if ($this->path_count == 3 && $this->method == "DELETE") {
             $this->deleteOne($this->path_parts[2]);
         } 
+
+
         
         // If none of our ifs are true, we should respond with "not found"
         else {
@@ -62,20 +63,21 @@ class UsersAPI extends RestAPI
     }
 
     // Gets all customers and sends them to the client as JSON
-    private function getAll()
+    private function getAllFavorites()
     {
-        $users = UsersService::getAllUsers();
+        $favorites = FavoritesService::getAllFavorites();
+        
 
-        $this->sendJson($users);
+        $this->sendJson($favorites);
     }
 
     // Gets one and sends it to the client as JSON
     private function getById($id)
     {
-        $user = UsersService::getUserById($id);
+        $favorite = FavoritesService::getFavoriteById($id);
 
-        if ($user) {
-            $this->sendJson($user);
+        if ($favorite) {
+            $this->sendJson($favorite);
         } else {
             $this->notFound();
         }
@@ -83,47 +85,43 @@ class UsersAPI extends RestAPI
 
     // Gets the contents of the body and saves it as a customer by 
     // inserting it in the database.
-    //FOR POSTING 
     private function postOne()
     {
-        //object oriented programming for assigning customermodel to customer
-        // using word new -- making new object with its own set of values
-        //by assigning it so customer -> create new reference that can be reused and passed around.
-        $user = new UserModel();
+        $favorite = new FavoritesModel();
 
-        //$customer->customer_id = $this->body["customer_id"];
-        $user->user_name = $this->body["user_name"];
-        $user->user_password = $this->body["user_password"];
-        $user->user_admin = $this->body["user_admin"];
+       // $app->app_id = $this->body["app_id"];
+        $favorite->user_id = $this->body["user_id"];
+        $favorite->blog_id = $this->body["blog_id"];
 
-
-        //evoking statis method 'savecustomer' on customerservice' passing the 
-        //customer object as a parameter and assigning the return value to variable $succes
-
-        $success = UsersService::saveUser($user);
+        $success = FavoritesService::saveFavorite($favorite);
 
         if($success){
             $this->created();
-            //you get comment 
         }
         else{
             $this->error();
         }
     }
 
+
     // Gets the contents of the body and updates the customer
     // by sending it to the DB
-    //FOR PUTTING 
-
     private function putOne($id)
     {
-        $user = new UserModel();
+        $favorite = new BlogsModel();
 
-        $user->user_name = $this->body["user_name"];
-        $user->user_password = $this->body["user_password"];
-        $user->user_admin = $this->body["user_admin"];
+               // $app->app_id = $this->body["app_id"];
+               $favorite->blog_title = $this->body["blog_title"];
+               $favorite->blog_text = $this->body["blog_text"];
+               $favorite->latitude = $this->body["latitude"];
+               $favorite->longitude = $this->body["longitude"];
+               $favorite->place_id = $this->body["place_id"];
 
-        $success = UsersService::updateUserById($id, $user);
+
+       // AppsService is the class name, and updateAppsById is the static 
+       //method being called. $id and $app are the arguments being passed to the method.
+        //:: is a scope operator used to acces statis methods and properties.
+        $success = FavoritesService::updateBlogById($id, $favorite);
 
         if($success){
             $this->ok();
@@ -134,23 +132,23 @@ class UsersAPI extends RestAPI
     }
 
     // Deletes the customer with the specified ID in the DB
-    //FOR DELETING
+
+    
     private function deleteOne($id)
-    {       
- //finds user vanuit app service and assigned het aan $customer
-        $user = UsersService::getUserById($id);
+    {
+        //finds app vanuit app service and assigned het aan $app
+        $favorite = FavoritesService::getFavoriteById($id);
 
-
-        if($user == null){ //als er geen user is gevonden die aansluit naar functie met notfound 
-
+        //als er geen app is gevonden die aansluit naar functie met notfound 
+        if($favorite == null){
             $this->notFound();
         }
-        //als er wel een user word gevonden dan word de functie deleteappbyid uit de appsservice geroepen om app te verwijderen
 
-        $success = UsersService::deleteUserById($id);
+        //als er wel een app word gevonden dan word de functie deleteappbyid uit de appsservice geroepen om app te verwijderen
+        $success = FavoritesService::deleteFavoriteById($id);
 
         if($success){
-            $this->noContent();// als het een succes is word de functie no content geroepen --> bevestiging.
+            $this->noContent(); // als het een succes is word de functie no content geroepen --> bevestiging.
         }
         else{
             $this->error();

@@ -14,5 +14,7 @@ class BlogsModel{
     public $latitude;    
     public $longitude; 
     public $place_id;
+    public $user_id;
+
 }
 

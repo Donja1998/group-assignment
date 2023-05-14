@@ -15,6 +15,59 @@ class UsersDatabase extends Database
     private $table_name = "users";
     private $id_name = "user_id";
 
+
+
+      // Get one user by using the inherited function getOneRowByIdFromTable
+    // Never send the password hash unless needed for authentication
+    public function getByUsername($user_name)
+    {
+        $user = $this->getByUsernameWithPassword($user_name);
+
+        // Never send the password hash unless needed for authentication
+        unset($user->user_password);
+
+        // Return the UserModel object or null if no user was found
+        return $user;
+    }
+
+ // Get one user by using the inherited function getOneRowByIdFromTable
+    // Never send the password hash unless needed for authentication
+    public function getByUsernameWithPassword($user_name)
+    {
+        // Define SQL query to retrieve user data by username
+        $query = "SELECT * FROM users WHERE user_name = ?";
+
+        // Prepare the query statement
+        $stmt = $this->conn->prepare($query);
+
+        // Bind the username parameter to the prepared statement
+        $stmt->bind_param("s", $user_name);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Get the result of the query as a mysqli_result object
+        $result = $stmt->get_result();
+
+        // Fetch the user data as a UserModel object
+        $user = $result->fetch_object("UserModel");
+
+        // Return the UserModel object or null if no user was found
+        return $user;
+    }
+
+
+    // Get one user by using the inherited function getOneRowByIdFromTable
+    // Never send the password hash unless needed for authentication
+    public function getByIdWithPassword($user_id)
+    {
+        $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $user_id);
+
+        $user = $result->fetch_object("UserModel");
+
+        return $user;
+    }
+
     // Get one customer by using the inherited function getOneRowByIdFromTable
     public function getOne($user_id)
     {
@@ -22,6 +75,9 @@ class UsersDatabase extends Database
         $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $user_id);
 
         $user = $result->fetch_object("UserModel");
+
+         // Never send the password hash unless needed for authentication
+         unset($user->user_password);
 
         return $user;
     }
@@ -39,7 +95,10 @@ class UsersDatabase extends Database
         $user = [];
 
         while($user = $result->fetch_object("UserModel")){
-            $user[] = $user;
+            $users[] = $user;
+
+              // Never send the password hash unless needed for authentication
+              unset($user->user_password);
         }
 
         return $user;
@@ -56,7 +115,7 @@ class UsersDatabase extends Database
         //uitslag wordt toegewezen aan $stmt
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("issi", $user->user_id, $user->user_name, $user->user_password, $user->user_admin);
+        $stmt->bind_param("ssi", $user->user_name, $user->user_password, $user->user_admin);
 
         $success = $stmt->execute();
 
@@ -70,7 +129,22 @@ class UsersDatabase extends Database
 
      $stmt = $this->conn->prepare($query);
 
-     $stmt->bind_param("issi", $user->$user_id, $user->user_name, $user->user_password, $user->user_admin);
+     $stmt->bind_param("ssii", $user->user_name, $user->user_password, $user->user_admin, $user_id);
+
+     $success = $stmt->execute();
+
+     return $success;
+ }
+
+
+ // Update one by creating a query and using the inherited $this->conn 
+ public function updatePasswordById($user_id, $user_password)
+ {
+     $query = "UPDATE users SET user_password=? WHERE user_id=?;";
+
+     $stmt = $this->conn->prepare($query);
+
+     $stmt->bind_param("si", $user_password, $user_id);
 
      $success = $stmt->execute();
 

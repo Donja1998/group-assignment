@@ -8,7 +8,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 // Use "require_once" to load the files needed for the class
 
 require_once __DIR__ . "/Database.php";
-require_once __DIR__ . "/../models/BlogsModel.php";
+require_once __DIR__ . "/../models/BlogpostModel.php";
 
 class blogsDatabase extends Database
 {
@@ -20,7 +20,7 @@ class blogsDatabase extends Database
     {
         $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $blog_id);
 
-        $blogs = $result->fetch_object("BlogsModel");
+        $blogs = $result->fetch_object("BlogpostModel");
 
         return $blogs;
     }
@@ -39,8 +39,29 @@ class blogsDatabase extends Database
 
         $blogs = [];
 
-        while($blog = $result->fetch_object("BlogsModel")){
+        while($blog = $result->fetch_object("BlogpostModel")){
             $blogs[] = $blog;
+        }
+
+        return $blogs;
+    }
+
+    public function getByUserId($user_id)
+    {
+        $query = "SELECT * FROM blogs WHERE user_id = ?";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bind_param("i", $user_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $blogs = [];
+
+        while ($blogs = $result->fetch_object("BlogpostModel")) {
+            $blogs[] = $blogs;
         }
 
         return $blogs;
@@ -48,11 +69,11 @@ class blogsDatabase extends Database
 
     // Create one by creating a query and using the inherited $this->conn 
     public function insert(BlogsModel $blog){
-        $query = "INSERT INTO blogs (blog_id, blog_title, blog_text, latitude, longitude, place_id ) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO blogs (blog_title, blog_text, latitude, longitude, place_id, blog_id ) VALUES (?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("issssi", $blog->blog_id, $blog->blog_title, $blog->blog_text, $blog->latitude, $blog->longitude,$blog->place_id);
+        $stmt->bind_param("ssddii", $blog->blog_title, $blog->blog_text, $blog->latitude, $blog->longitude,$blog->place_id, $blog->blog_id, );
       
 
         $success = $stmt->execute();
@@ -74,7 +95,7 @@ class blogsDatabase extends Database
         $stmt = $this->conn->prepare($query);
 
 
-        $stmt->bind_param("issssi", $blog->blog_id, $blog->blog_title, $blog->blog_text, $blog->latitude, $blog->longitude,$blog->place_id);
+        $stmt->bind_param("ssddii", $blog->blog_title, $blog->blog_text, $blog->latitude, $blog->longitude,$blog->place_id, $blog_id);
 
         $success = $stmt->execute();
 
