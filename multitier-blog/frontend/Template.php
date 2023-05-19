@@ -21,21 +21,132 @@ class Template
             <script src="<?= $home_path ?>/assets/js/script.js"></script>
         </head>
         <nav>
-                <a href="<?= $home_path ?>">Start</a>
-                <a href="<?= $home_path ?>/articles">Blogs</a>
+            <a href="<?= $home_path ?>">Start</a>
+            <a href="<?= $home_path ?>/articles">Blogs</a>
 
-                <?php if ($user) : ?>
-                    <a href="<?= $home_path ?>/auth/profile">Profile</a>
-                    <a href="<?= $home_path ?>/blogs">Blogs</a>
-                <?php else : ?>
-                    <a href="<?= $home_path ?>/auth/login">Log in</a>
-                <?php endif; ?>
-            </nav>
+            <?php if ($user) : ?>
+                <a href="<?= $home_path ?>/auth/profile">Profile</a>
+                <a href="<?= $home_path ?>/blogs">Blogs</a>
+            <?php else : ?>
+                <a href="<?= $home_path ?>/auth/login">Log in</a>
+            <?php endif; ?>
+        </nav>
+
         <body>
             <header style="background-image: url('<?= $home_path ?>/assets/img/header-bg.jpg')">
                 <h1><?= $title; ?></h1>
             </header>
 
+
+
+            <main>
+
+                <?php if ($error) : ?>
+                    <div class="error">
+                        <p><?= $error ?></p>
+                    </div>
+                <?php endif; ?>
+
+            <?php }
+
+
+
+        public static function footer()
+        {
+            ?>
+            </main>
+            <footer>
+                Copyright 2025
+            </footer>
+        </body>
+
+        </html>
+    <?php }
+    }
+
+
+    class HomeTemplate
+    {
+        public static function HomeHeader($title, $error = false)
+        {
+            $home_path = getHomePath();
+            $user = getUser();
+    ?>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title><?= $title ?> - Multitier Shop</title>
+
+            <link rel="stylesheet" href="<?= $home_path ?>/assets/css/style.css">
+
+            <script src="<?= $home_path ?>/assets/js/script.js"></script>
+        </head>
+        <nav>
+            <a href="<?= $home_path ?>">Start</a>
+            <a href="<?= $home_path ?>/articles">Blogs</a>
+
+            <?php if ($user) : ?>
+                <a href="<?= $home_path ?>/auth/profile">Profile</a>
+                <a href="<?= $home_path ?>/blogs">Blogs</a>
+            <?php else : ?>
+                <a href="<?= $home_path ?>/auth/login">Log in</a>
+            <?php endif; ?>
+        </nav>
+
+        <body>
+            <header class="home-header">
+                <div class="carousel-images">
+                    <img src="<?= $home_path ?>/assets/img/home-bg.jpeg" alt="Image 1">
+                    <img src="<?= $home_path ?>/assets/img/home-bg.jpeg" alt="Image 2">
+                    <img src="<?= $home_path ?>/assets/img/home-bg2.jpeg" alt="Image 3">
+                </div>
+                <div class="carousel-indicators"></div>
+            </header>
+
+
+            <body>
+            <h1 class="h1-home"> Latest articles  </h1>
+
+                <div class="home-articles">
+                    <?php
+                    $latestBlogs = BlogsServices::getAllBlogs();
+                    $articleCount = 0;
+
+                    echo '<div class="row">';
+                    foreach ($latestBlogs as $blog) {
+                        if ($articleCount >= 6) {
+                            break; // Exit the loop after displaying 6 articles
+                        }
+
+                        if ($articleCount % 2 == 0 && $articleCount > 0) {
+                            echo '</div><div class="row">';
+                        }
+                    ?>
+                        <div class="home-column">
+                            <article class="home-articles-item">
+                                <!-- CHANGE OUT FOR $BLOG->TITLE --> <img src="<?= $home_path ?>/assets/img/home-bg2.jpeg" alt="<?= $blog->title ?>">
+
+                                <h2><?= $blog->title ?></h2>
+                                <p><?= $blog->content ?></p>
+                                <a href="<?= $home_path ?>/blogs/<?= $blog->blog_id ?>">Show Blog</a>
+
+                            </article>
+                        </div>
+                    <?php
+                        $articleCount++;
+                    }
+                    echo '</div>';
+                    ?>
+                </div>
+
+
+
+
+            </body>
 
 
             <main>

@@ -65,11 +65,11 @@ class BlogsDatabase extends Database
 
     public function insert(BlogModel $blog)
     {
-        $query = "INSERT INTO blogs (title, content, place_id, user_id) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO blogs (title, content, place_id, user_id, blog_pic_url) VALUES (?, ?, ?, ?, ?)";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("sssi", $blog->title, $blog->content, $blog->place_id, $blog->user_id);
+        $stmt->bind_param("sssis", $blog->title, $blog->content, $blog->place_id, $blog->blog_pic_url, $blog->user_id);
 
         $success = $stmt->execute();
 
@@ -80,11 +80,11 @@ class BlogsDatabase extends Database
      
     public function updateById($blog_id, BlogModel $blog)
     {
-        $query = "UPDATE blogs SET title=?, content=?, place_id=?, user_id=? WHERE blog_id=?;";
+        $query = "UPDATE blogs SET title=?, content=?, place_id=?, user_id=?, blog_pic_url=?  WHERE blog_id=?;";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("sssii", $blog->title, $blog->content, $blog->place_id, $blog->user_id, $blog_id);
+        $stmt->bind_param("sssiis", $blog->title, $blog->content, $blog->place_id, $blog->user_id, $blog->blog_pic_url, $blog_id);
 
         $success = $stmt->execute();
 

@@ -82,6 +82,17 @@ header h1 {
     text-shadow: 3px 3px 6px black;
 }
 
+.home-header {
+    min-height: 600px;
+    height: 35vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 
 /* -- Nav -- */
 
@@ -128,6 +139,92 @@ footer {
     font-style: italic;
     font-size: 0.8em;
 }
+
+
+
+/* -- Header Home -- */
+.home-header {
+    position: relative;
+    height: 300px; /* Adjust the height as needed */
+    overflow: hidden;
+  }
+  
+  .carousel-images {
+    display: flex;
+    width: 300%; /* Adjust the width based on the number of images */
+    animation: carousel-animation 9s infinite;
+  }
+  
+  .carousel-images img {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+    margin: 0 6px;
+    padding: 0;
+    background-color: #ccc;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  
+  .carousel-indicators button.active {
+    background-color: #555;
+    opacity: 1;
+  }
+  
+  @keyframes carousel-animation {
+    0% {
+      transform: translateX(0);
+    }
+    33.33% {
+      transform: translateX(-100%);
+    }
+    66.66% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+/* -- Articles Home -- */
+.h1-home {
+  margin-left: 20%;
+}
+.home-articles {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    width: 60%;
+    margin: 0 auto; 
+    
+}
+
+.home-articles-item {
+align-content: center;}
+
+
+.home-column{
+    padding: 30px;
+    align-items: center;
+
+}
+
 
 /* -- Items -- */
 

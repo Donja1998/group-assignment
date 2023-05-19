@@ -13,4 +13,6 @@ class BlogModel{
     public $content;
     public $place_id;
     public $user_id;
+    public $blog_pic_url;
+
 }
