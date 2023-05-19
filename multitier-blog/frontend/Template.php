@@ -21,12 +21,11 @@ class Template
             <script src="<?= $home_path ?>/assets/js/script.js"></script>
         </head>
         <nav>
-            <a href="<?= $home_path ?>">Start</a>
-            <a href="<?= $home_path ?>/articles">Blogs</a>
+            <a href="<?= $home_path ?>">Home</a>
 
             <?php if ($user) : ?>
                 <a href="<?= $home_path ?>/auth/profile">Profile</a>
-                <a href="<?= $home_path ?>/blogs">Blogs</a>
+                <a href="<?= $home_path ?>/blogs">My Blogs</a>
             <?php else : ?>
                 <a href="<?= $home_path ?>/auth/login">Log in</a>
             <?php endif; ?>
@@ -51,18 +50,39 @@ class Template
 
 
 
-        public static function footer()
-        {
-            ?>
-            </main>
-            <footer>
-                Copyright 2025
-            </footer>
-        </body>
+public static function footer()
+{
+    $home_path = getHomePath();
 
-        </html>
-    <?php }
-    }
+    ?>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                <img class="footer-logo" src="<?= $home_path ?>/assets/img/logo.png" alt="Logo">
+                    <p>Sign up for our newsletter:</p>
+                    <input type="email" placeholder="Enter your email" class="newsletter-input">
+                    <button class="newsletter-button">Sign up</button>
+                </div>
+                <div class="footer-section">
+                    <ul class="footer-pages">
+                    <li><a href="<?= $home_path ?>">Home</a></li>
+                    <li>   <a href="<?= $home_path ?>/auth/profile">Profile</a></li>
+                    <li> <a href="<?= $home_path ?>/blogs">My Blogs</a>
+                
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Your Website. All rights reserved.
+            </div>
+        </footer>
+</body>
+
+</html>
+<?php
+}
+}
 
 
     class HomeTemplate
@@ -86,12 +106,11 @@ class Template
             <script src="<?= $home_path ?>/assets/js/script.js"></script>
         </head>
         <nav>
-            <a href="<?= $home_path ?>">Start</a>
-            <a href="<?= $home_path ?>/articles">Blogs</a>
+            <a href="<?= $home_path ?>">Home</a>
 
             <?php if ($user) : ?>
                 <a href="<?= $home_path ?>/auth/profile">Profile</a>
-                <a href="<?= $home_path ?>/blogs">Blogs</a>
+                <a href="<?= $home_path ?>/blogs">My Blogs</a>
             <?php else : ?>
                 <a href="<?= $home_path ?>/auth/login">Log in</a>
             <?php endif; ?>

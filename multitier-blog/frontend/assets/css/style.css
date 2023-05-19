@@ -122,23 +122,70 @@ nav a:hover {
 main {
     flex-grow: 1;
     margin: auto;
-    max-width: 800px;
     padding: 0 20px;
     width: 100%;
 }
 
+
+
 /* -- Footer -- */
 
 footer {
-    background: #000f1f;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-style: italic;
-    font-size: 0.8em;
+    background-color: #f2f2f2;
+    padding: 20px 0;
+    width: 100%;
 }
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.footer-section {
+    flex-basis: 25%;
+}
+
+.footer-logo {
+    width: 100px; /* Adjust the size as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.newsletter-input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.newsletter-button {
+    padding: 5px 10px;
+}
+
+.footer-pages li {
+    margin-bottom: 5px;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.footer-pages ul {
+    margin-bottom: 5px;
+    list-style: none;
+    padding: 0px;
+}
+
+.social-media li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 
 
@@ -269,4 +316,12 @@ div.solo-item{
 div.solo-item img{
     max-width: 420px;
     margin: 0 auto 15px;
+}
+
+/* -- profile page -- */
+
+.profile-page {
+    display: flex;;
+    justify-content: center;
+    max-width: 80%;
 }
