@@ -172,6 +172,8 @@ class BlogsController extends ControllerBase
         $blog->title = $this->body["title"];
         $blog->content = $this->body["content"];
         $blog->place_id = $this -> body["place_id"];
+        $blog->blog_pic_url = $this -> body["blog_pic_url"];
+
 
 
         // Admins can connect any user to the purchase
@@ -210,6 +212,7 @@ class BlogsController extends ControllerBase
       // Get updated properties from the body
       $blog->title = $this->body["title"];
       $blog->content = $this->body["content"];
+      $blog->blog_pic_url = $this -> body["blog_pic_url"];
       $blog->place_id = $existing_blog->place_id;
 
       $success = BlogsServices::updateBlogsById($id, $blog);

@@ -69,7 +69,7 @@ class BlogsDatabase extends Database
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("sssis", $blog->title, $blog->content, $blog->place_id, $blog->blog_pic_url, $blog->user_id);
+        $stmt->bind_param("sssis", $blog->title, $blog->content, $blog->place_id, $blog->user_id, $blog->blog_pic_url);
 
         $success = $stmt->execute();
 

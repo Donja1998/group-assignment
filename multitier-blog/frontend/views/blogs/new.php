@@ -4,6 +4,15 @@ require_once __DIR__ . "/../../Template.php";
 
 Template::header("New Blog");
 
+$user_id = null;
+
+foreach ($_SESSION as $key => $value) {
+    if ($value instanceof UserModel) {
+        $user_id = $value->user_id;
+        break; // Exit the loop since we found the user_id
+    }
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
    // Retrieve form data
@@ -35,12 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <h1>New Blog</h1>
 
 
-<form action="<?= $this->home ?>/blogs" method="post">
+<form action="<?= $this->home ?>/blogs" method="post" >
    <input type="text" name="title" placeholder="Title name"> <br>
    <input type="text" name="content" placeholder="Content"> <br>
    <input type="text" name="location" id="location-input" placeholder="Location"> <br>
-   <input type="file" name="blog_pic_url"> <br>
+   <input type="text" name="blog_pic_url"  placeholder="image url"> <br>
    <input type="hidden" name="place_id" id="place-id-input" value="<?php echo $place_id; ?>"> <br>
+   <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"> <br>
 
 
    <?php if ($this->user->user_role === "admin") : ?>
@@ -51,10 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
    <input type="submit" value="Save" class="btn">
 </form>
 
+<?php echo $user_id ?>
 
-<?php if (isset($map_url)) : ?>
-<iframe width="600" height="450" frameborder="0" style="border:0" src="<?= $map_url ?>" allowfullscreen></iframe>
-<?php endif; ?>
+
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJedt2e6mhEqbBw9KX4AVazXiQeuswwoo&libraries=places"></script>
