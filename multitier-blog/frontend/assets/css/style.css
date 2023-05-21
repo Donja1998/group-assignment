@@ -29,7 +29,7 @@ img {
 }
 
 .delete-btn {
-    background-color: red;
+    background-color: #F74C25;
     color: white;
     border-color: white;
 }
@@ -60,7 +60,7 @@ input[type=file] {
 }
 
 .error {
-    border: 2px solid red;
+    border: 2px solid #F74C25;
     padding: 0 15px;
     font-weight: 700;
 }
