@@ -25,6 +25,7 @@ img {
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid gray;
+    transition: opacity 0.3s;
 }
 
 .delete-btn {
@@ -100,7 +101,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 3px 4px 2px rgb(0 0 0 / 20%)
+    box-shadow: 0 3px 4px 2px rgb(0 ,0 ,0, 0.2);
 }
 
 nav a {
@@ -131,7 +132,7 @@ main {
 /* -- Footer -- */
 
 footer {
-    background-color: #f2f2f2;
+    background-color: #F74C25;
     padding: 20px 0;
     width: 100%;
 }
@@ -142,6 +143,8 @@ footer {
     align-items: flex-start;
     margin: 0 auto;
     padding: 40px;
+
+    
 }
 
 .footer-section {
@@ -184,6 +187,11 @@ footer {
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
+}
+a{
+    color: #1e1e1e;
+    text-decoration: none;
+
 }
 
 
