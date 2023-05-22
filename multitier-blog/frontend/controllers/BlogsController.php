@@ -89,10 +89,9 @@ class BlogsController extends ControllerBase
     // Gets one and shows it in the edit view
     private function showEditForm()
     {
-        $this->requireAuth(["admin"]);
-
         // Get the purchase with the ID from the URL
         $blog = $this->getBlog();
+    
 
         // $this->model is used for sending data to the view
         $this->model = $blog;
@@ -200,7 +199,7 @@ class BlogsController extends ControllerBase
   // Update a purchase with data from the URL and body
   private function updateBlog()
   {
-      $this->requireAuth(["admin"]);
+      //$this->requireAuth(["admin"]);
 
       $blog = new BlogModel();
 
@@ -212,8 +211,10 @@ class BlogsController extends ControllerBase
       // Get updated properties from the body
       $blog->title = $this->body["title"];
       $blog->content = $this->body["content"];
+      $blog->place_id = $this -> body["place_id"];
+      $blog->user_id = $this -> body["user_id"];
       $blog->blog_pic_url = $this -> body["blog_pic_url"];
-      $blog->place_id = $existing_blog->place_id;
+      //$blog->place_id = $existing_blog->place_id;
 
       $success = BlogsServices::updateBlogsById($id, $blog);
 
