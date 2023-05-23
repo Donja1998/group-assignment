@@ -152,6 +152,7 @@ footer {
 
 .footer-section {
     flex-basis: 25%;
+    text-decoration: none;
 }
 
 #logo {
