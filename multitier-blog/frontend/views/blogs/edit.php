@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <h1>Edit <?= $this->model->blog_id ?></h1>
 
-<form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/edit" method="post">
+<form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/edit" method="post" enctype="multipart/form-data">
     <input type="text" name="title" value="<?= $this->model->title ?>" placeholder="title"> <br>
     <input type="text" name="content" value="<?= $this->model->content ?>" placeholder="content"> <br>
     <input type="text" name="location" id="location-input" placeholder="Location"> <br>
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <input type="hidden" name="user_id" value="<?= $user_id ?>">
 
-    <input type="text" name="blog_pic_url"  placeholder="image url"> <br>
+    <input type="file" name="blog_pic_url"  > <br>
     
     <input type="submit" value="Save" class="btn">
 </form>

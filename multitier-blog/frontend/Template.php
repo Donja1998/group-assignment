@@ -147,8 +147,7 @@ public static function footer()
                     ?>
                         <div class="home-column">
                             <article class="home-articles-item">
-                                <!-- CHANGE OUT FOR $BLOG->TITLE --> <img src="<?= $home_path ?>/assets/img/home-bg2.jpeg" alt="<?= $blog->title ?>">
-
+                                <img src="/group-assignment/multitier-blog/home/<?= $blog->blog_pic_url ?>" alt="<?= $blog->title ?>">
                                 <h2><?= $blog->title ?></h2>
                                 <p><?= $blog->content ?></p>
                                 <a href="<?= $home_path ?>/blogs/<?= $blog->blog_id ?>">Show Blog</a>

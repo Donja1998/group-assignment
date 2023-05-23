@@ -44,11 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <h1>New Blog</h1>
 
 
-<form action="<?= $this->home ?>/blogs" method="post" >
+<form action="<?= $this->home ?>/blogs" method="post" enctype="multipart/form-data" >
    <input type="text" name="title" placeholder="Title name"> <br>
    <input type="text" name="content" placeholder="Content"> <br>
    <input type="text" name="location" id="location-input" placeholder="Location"> <br>
-   <input type="text" name="blog_pic_url"  placeholder="image url"> <br>
+   <input type="file" name="blog_pic_url"> <br>
    <input type="hidden" name="place_id" id="place-id-input" value="<?php echo $place_id; ?>"> <br>
    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"> <br>
 
