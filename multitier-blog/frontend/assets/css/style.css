@@ -1,5 +1,5 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
@@ -40,6 +40,11 @@ img {
 
 form {
     margin: 15px 0;
+}
+
+#newBlogForm{
+    display: flex;
+    flex-direction: column;
 }
 
 input[type=text],
@@ -125,8 +130,7 @@ main {
     margin: auto;
     padding: 0 20px;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
+
 }
 
 

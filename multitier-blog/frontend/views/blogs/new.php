@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 ?>
 
-
+<div id="newBlogForm">
 <h1>New Blog</h1>
 
 
@@ -60,8 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
    <input type="submit" value="Save" class="btn">
 </form>
-
-<?php echo $user_id ?>
+   </div>
 
 
 
