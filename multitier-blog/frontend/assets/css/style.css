@@ -148,7 +148,6 @@ footer {
     align-items: flex-start;
     margin: 0 auto;
     padding: 40px;
-    color: #2B2B2B;
 }
 
 .footer-section {
@@ -193,7 +192,15 @@ footer {
 }
 
 
-
+footer a {
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #2B2B2B;
+    font-weight: 600;
+    padding: 25px 25px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
 
 
 /* -- Header Home -- */
