@@ -40,7 +40,6 @@ img {
 
 form {
     margin: 15px 0;
-    align-items: center;
 }
 
 input[type=text],
@@ -126,6 +125,8 @@ main {
     margin: auto;
     padding: 0 20px;
     width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
 
 
