@@ -12,6 +12,9 @@ Template::header($this->model->blog_id);
 <?php endif; ?>
 <h1><?= $this->model->title ?></h1>
 
+<img src=" <?= $this->model->blog_pic_url?>" alt="">
+
+
 <p>
     <b>Id: </b>
     <?= $this->model->blog_id ?>

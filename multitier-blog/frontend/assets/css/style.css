@@ -1,5 +1,5 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;   
+    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
@@ -25,11 +25,10 @@ img {
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid gray;
-    transition: opacity 0.3s;
 }
 
 .delete-btn {
-    background-color: #F74C25;
+    background-color: red;
     color: white;
     border-color: white;
 }
@@ -60,7 +59,7 @@ input[type=file] {
 }
 
 .error {
-    border: 2px solid #F74C25;
+    border: 2px solid red;
     padding: 0 15px;
     font-weight: 700;
 }
@@ -101,7 +100,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 3px 4px 2px rgb(0 ,0 ,0, 0.2);
+    box-shadow: 0 3px 4px 2px rgb(0 0 0 / 20%)
 }
 
 nav a {
@@ -132,7 +131,7 @@ main {
 /* -- Footer -- */
 
 footer {
-    background-color: #F74C25;
+    background-color: #f2f2f2;
     padding: 20px 0;
     width: 100%;
 }
@@ -186,11 +185,6 @@ footer {
     text-align: center;
     margin-top: 20px;
 }
-a{
-    color: #2ecc6d;
-    text-decoration: none;
-
-}
 
 
 
@@ -205,7 +199,7 @@ a{
   .carousel-images {
     display: flex;
     width: 300%; /* Adjust the width based on the number of images */
-    animation: carousel-animation 15s infinite;
+    animation: carousel-animation 9s infinite;
   }
   
   .carousel-images img {

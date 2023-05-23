@@ -28,6 +28,8 @@ Template::header("My Blogs");
             <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>/edit">Edit</a>
 
             <?php endif; ?>
+            <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>/edit">Edit</a>
+
 
             <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>">Show</a>
         </article>
