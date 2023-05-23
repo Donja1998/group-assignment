@@ -155,9 +155,7 @@ footer {
 }
 
 .footer-logo {
-    width: 100px; /* Adjust the size as needed */
-    height: auto;
-    margin-bottom: 10px;
+    font-weight: 200;
 }
 
 .newsletter-input {
