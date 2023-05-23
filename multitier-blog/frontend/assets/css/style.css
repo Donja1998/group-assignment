@@ -154,8 +154,8 @@ footer {
     flex-basis: 25%;
 }
 
-.footer-logo {
-    font-weight: 200;
+#logo {
+    font-weight: 400;
 }
 
 .newsletter-input {
