@@ -196,10 +196,9 @@ footer a {
     font-size: 0.9em;
     text-decoration: none;
     color: #2B2B2B;
-    font-weight: 600;
-    padding: 25px 25px;
+    padding: 20px 20px;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
+    text-align: right;
 }
 
 
