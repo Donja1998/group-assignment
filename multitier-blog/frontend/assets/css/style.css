@@ -86,7 +86,6 @@ header {
 header h1 {
     color: #F2F2EF;
     font-size: 5em;
-    text-shadow: 3px 3px 6px #4853ef;
 }
 
 .home-header {
@@ -107,7 +106,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 3px 4px 2px rgb(0 0 0 / 20%)
+    height: 40px;
 }
 
 nav a {
