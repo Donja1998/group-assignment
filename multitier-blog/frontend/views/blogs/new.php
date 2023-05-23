@@ -41,8 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <div id="newBlogForm">
-<h1>New Blog</h1>
-
 
 <form action="<?= $this->home ?>/blogs" method="post" enctype="multipart/form-data" >
    <input type="text" name="title" placeholder="Title name"> <br>
