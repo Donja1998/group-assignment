@@ -59,7 +59,6 @@ public static function footer()
             <div class="footer-content">
                 <div class="footer-section">
                 <p id="logo">THYNK TRAVEL</p>
-                <img class="footer-logo" src="<?= $home_path ?>/assets/img/logo.png" alt="Logo">
                     <p>Sign up for our newsletter:</p>
                     <input type="email" placeholder="Enter your email" class="newsletter-input">
                     <button class="newsletter-button">Sign up</button>
