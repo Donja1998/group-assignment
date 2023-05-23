@@ -46,7 +46,7 @@ input[type=number],
 input[type=password],
 textarea,
 select {
-    border: 1px solid black;
+    border: 1px solid #2B2B2B;
     font-size: 1em;
     padding: 3px;
     margin: 3px 0;
@@ -77,9 +77,9 @@ header {
 }
 
 header h1 {
-    color: white;
+    color: #F2F2EF;
     font-size: 5em;
-    text-shadow: 3px 3px 6px black;
+    text-shadow: 3px 3px 6px #2B2B2B;
 }
 
 .home-header {
@@ -106,7 +106,7 @@ nav {
 nav a {
     font-size: 0.9em;
     text-decoration: none;
-    color: #1e1e1e;
+    color: #2B2B2B;
     font-weight: 600;
     padding: 15px 25px;
     letter-spacing: 0.5px;
