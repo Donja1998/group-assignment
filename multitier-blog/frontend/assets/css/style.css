@@ -137,7 +137,7 @@ main {
 /* -- Footer -- */
 
 footer {
-    background-color: #4c6cb1;
+    background-color: #2B2B2B;
     padding: 20px 0;
     width: 100%;
 }
@@ -194,7 +194,7 @@ footer {
 
 footer a {
     text-decoration: none;
-    color: #2B2B2B;
+    color: #e0e0e0;
     padding: 20px 20px;
 }
 
