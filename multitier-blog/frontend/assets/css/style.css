@@ -40,6 +40,7 @@ img {
 
 form {
     margin: 15px 0;
+    align-items: center;
 }
 
 input[type=text],
@@ -200,7 +201,7 @@ footer {
   .carousel-images {
     display: flex;
     width: 300%; /* Adjust the width based on the number of images */
-    animation: carousel-animation 9s infinite;
+    animation: carousel-animation 15s infinite;
   }
   
   .carousel-images img {
