@@ -148,6 +148,7 @@ footer {
     align-items: flex-start;
     margin: 0 auto;
     padding: 40px;
+    color: #2B2B2B;
 }
 
 .footer-section {
@@ -191,10 +192,6 @@ footer {
     margin-top: 20px;
 }
 
-.footer-a {
-    text-decoration: none;
-    color: #2B2B2B;
-}
 
 
 
