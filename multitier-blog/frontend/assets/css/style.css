@@ -208,7 +208,7 @@ footer a {
     margin: 0;
   }
 
-.home h1{
+.home-h1{
     position: absolute;
     bottom: 12px; /* move the headline to the bottom */
     left: 20px; /* move the headline to the left */
