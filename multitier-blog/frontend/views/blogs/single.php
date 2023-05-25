@@ -16,24 +16,11 @@ Template::header($this->model->blog_id);
 
 
 <p>
-    <b>Id: </b>
-    <?= $this->model->blog_id ?>
-</p>
-
-<p>
-    <b>Title </b>
     <?= $this->model->title ?>
 </p>
 
-
 <p>
-    <b>content: </b>
     <?= $this->model->content ?>
-</p>
-
-<p>
-    <b>Google Maps: </b>
-    <?= $this->model->place_id ?>
 </p>
 
     <?php
