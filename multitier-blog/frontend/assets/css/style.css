@@ -203,7 +203,7 @@ footer a {
 /* -- Header Home -- */
 .hero {
     position: relative;
-    height: 500px; /* Adjust the height as needed */
+    height: 600px; /* Adjust the height as needed */
     z-index: 0;
     margin: 0;
   }
@@ -229,6 +229,7 @@ footer a {
 /* -- Articles Home -- */
 .h1-home {
   margin-left: 20%;
+  justify-content: center;
 }
 .home-articles {
     display: flex;
