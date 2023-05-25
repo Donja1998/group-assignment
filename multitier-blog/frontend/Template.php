@@ -113,11 +113,10 @@ public static function footer()
         </nav>
 
         <body>
-            <header class="home-header">
-                    <img src="<?= $home_path ?>/assets/img/home-bg.jpeg" alt="Image 1">
-                    <h1>TRAVEL</h1>
-            </header>
-
+        <section class="hero">
+        <img src="<?= $home_path ?>/assets/img/home-bg.jpeg" alt="Image 1">
+            <h1>TRAVEL</h1>
+        </section>
 
             <body>
             <h1 class="h1-home"> Latest articles  </h1>
