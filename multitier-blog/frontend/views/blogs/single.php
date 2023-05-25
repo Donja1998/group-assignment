@@ -14,11 +14,6 @@ Template::header($this->model->blog_id);
 
 <img src=" <?= $this->model->blog_pic_url?>" alt="">
 
-
-<p>
-    <?= $this->model->title ?>
-</p>
-
 <p>
     <?= $this->model->content ?>
 </p>
