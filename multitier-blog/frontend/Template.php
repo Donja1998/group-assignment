@@ -114,12 +114,7 @@ public static function footer()
 
         <body>
             <header class="home-header">
-                <div class="carousel-images">
                     <img src="<?= $home_path ?>/assets/img/home-bg.jpeg" alt="Image 1">
-                    <img src="<?= $home_path ?>/assets/img/home-bg.jpeg" alt="Image 2">
-                    <img src="<?= $home_path ?>/assets/img/home-bg2.jpeg" alt="Image 3">
-                </div>
-                <div class="carousel-indicators"></div>
             </header>
 
 
