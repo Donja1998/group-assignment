@@ -115,6 +115,7 @@ public static function footer()
         <body>
             <header class="home-header">
                     <img src="<?= $home_path ?>/assets/img/home-bg.jpeg" alt="Image 1">
+                    <h1>TRAVEL</h1>
             </header>
 
 
