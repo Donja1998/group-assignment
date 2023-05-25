@@ -32,11 +32,7 @@ class Template
         </nav>
 
         <body>
-            <header style="background-image: url('<?= $home_path ?>/assets/img/header-bg.jpg')">
-                <h1><?= $title; ?></h1>
-            </header>
-
-
+        
 
             <main>
 
