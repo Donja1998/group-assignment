@@ -203,14 +203,13 @@ footer a {
 /* -- Header Home -- */
 .home-header {
     position: relative;
-    height: 300px; /* Adjust the height as needed */
+    height: 100px; /* Adjust the height as needed */
     z-index: 0;
     margin: 0;
   }
 
 .home img{
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
