@@ -314,8 +314,3 @@ div.solo-item img{
 
 /* -- profile page -- */
 
-.profile-page {
-    display: flex;
-    justify-content: center;
-    max-width: 80%;
-}
