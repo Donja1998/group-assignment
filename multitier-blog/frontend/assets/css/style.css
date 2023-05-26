@@ -317,6 +317,7 @@ article.item a{
     border: 2px solid brown;
     border-radius: 8px;
     padding: 8px;
+    width: fit-content;
 }
 
 /* -- Solo item -- */
