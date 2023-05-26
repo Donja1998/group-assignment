@@ -311,6 +311,14 @@ article.item > div {
     justify-content: space-between;
 }
 
+article.item a{
+    text-decoration: none;
+    color: brown;
+    border: 2px solid brown;
+    border-radius: 8px;
+    padding: 8px;
+}
+
 /* -- Solo item -- */
 div.solo-item{
     text-align: center;
