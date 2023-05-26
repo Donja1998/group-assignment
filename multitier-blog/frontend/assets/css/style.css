@@ -357,3 +357,12 @@ div.solo-item img{
     margin-top: 5%;
     margin-bottom: 10%;
 }
+/* -- edit blog page -- */
+
+#editDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}

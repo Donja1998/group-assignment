@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
+<div id="editDiv">
 <h1>Edit</h1>
 
 <form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/edit" method="post" enctype="multipart/form-data">
@@ -46,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/delete" method="post">
     <input type="submit" value="Delete" class="btn delete-btn">
 </form>
-
+</div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJedt2e6mhEqbBw9KX4AVazXiQeuswwoo&libraries=places"></script>
 <script>
    // Initialize the Autocomplete functionality
