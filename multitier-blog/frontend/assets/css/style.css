@@ -315,6 +315,11 @@ div.solo-item img{
 }
 
 /* -- My blogs page -- */
+#myBlogsDiv{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 #creatNew{
     text-decoration: none;
     color: rgb(232, 226, 226);

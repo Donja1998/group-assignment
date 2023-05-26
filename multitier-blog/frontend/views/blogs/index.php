@@ -4,6 +4,7 @@ require_once __DIR__ . "/../../Template.php";
 Template::header("My Blogs");
 ?>
 
+<div id="myBlogsDiv">
 <h1>My Blogs </h1>
 
 <a id="creatNew" href="<?= $this->home ?>/blogs/new">Create new</a>
@@ -34,6 +35,7 @@ Template::header("My Blogs");
 
             <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>">Show</a>
         </article>
+        </div>
 
     <?php endforeach; ?>
 
