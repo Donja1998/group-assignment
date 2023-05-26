@@ -25,6 +25,7 @@ img {
     color: brown;
     border: 2px solid brown;
     border-radius: 4px;
+    padding: 8px;
 }
 
 .btn {
