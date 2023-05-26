@@ -13,8 +13,6 @@ Template::header("Profile");
     <p>(admin user)</p>
 <?php endif; ?>
 
-<hr>
-
 <h2>Set profile picture</h2>
 
 <?php if ($this->user->profile_pic_url) : ?>
