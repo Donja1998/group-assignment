@@ -20,6 +20,12 @@ img {
     max-width: 100%;
 }
 
+.showBtn{
+    text-decoration: none;
+    color: brown;
+    border-radius: 2px;
+}
+
 .btn {
     font-weight: 700;
     padding: 5px 15px;

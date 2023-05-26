@@ -64,7 +64,6 @@ public static function footer()
                     <li><a href="<?= $home_path ?>">Home</a></li>
                     <li>   <a href="<?= $home_path ?>/auth/profile">Profile</a></li>
                     <li> <a href="<?= $home_path ?>/blogs">My Blogs</a>
-                
                     </ul>
                 </div>
                 
@@ -141,7 +140,7 @@ public static function footer()
                                 <img src="/group-assignment/multitier-blog/home/<?= $blog->blog_pic_url ?>" alt="<?= $blog->title ?>">
                                 <h2><?= $blog->title ?></h2>
                                 <p><?= $blog->content ?></p>
-                                <a href="<?= $home_path ?>/blogs/<?= $blog->blog_id ?>">Show Blog</a>
+                                <a id="showBtn" href="<?= $home_path ?>/blogs/<?= $blog->blog_id ?>">Show Blog</a>
 
                             </article>
                         </div>
