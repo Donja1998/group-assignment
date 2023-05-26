@@ -24,8 +24,9 @@ img {
     text-decoration: none;
     color: brown;
     border: 2px solid brown;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 8px;
+    margin: 12px;
 }
 
 .btn {
