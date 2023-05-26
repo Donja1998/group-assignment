@@ -331,6 +331,7 @@ div.solo-item img{
     padding: 8px;
     margin-top: 8px;
     width: 120px;
+    align-items: center;
 }
 
 /* -- edit blog page -- */
