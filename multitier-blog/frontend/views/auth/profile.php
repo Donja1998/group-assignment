@@ -31,10 +31,6 @@ Template::header("Profile");
 </form>
 
 <hr>
-
-<form action="<?= $this->home ?>/auth/logout" method="post">
-    <input type="submit" value="Log out" class="btn delete-btn">
-</form>
 </div>
 </div>
 <?php Template::footer(); ?>
