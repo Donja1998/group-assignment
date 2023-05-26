@@ -3,7 +3,7 @@ require_once __DIR__ . "/../../Template.php";
 
 Template::header("Profile");
 ?>
-
+<div id="profileDiv">
     Logged in as <b><?= $this->user->username ?></b>
 </p>
 
@@ -32,5 +32,6 @@ Template::header("Profile");
 <form action="<?= $this->home ?>/auth/logout" method="post">
     <input type="submit" value="Log out" class="btn delete-btn">
 </form>
+</div>
 
 <?php Template::footer(); ?>
