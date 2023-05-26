@@ -4,7 +4,9 @@ require_once __DIR__ . "/../../Template.php";
 Template::header("Profile");
 ?>
 <div id="profileDiv">
+    <div id="user">
     Logged in as <b><?= $this->user->username ?></b>
+</div>
 </p>
 
 <?php if ($this->user->user_role === "admin") : ?>
