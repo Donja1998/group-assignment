@@ -314,6 +314,18 @@ div.solo-item img{
     margin-bottom: 10%;
 }
 
+/* -- My blogs page -- */
+#creatNew{
+    text-decoration: none;
+    color: rgb(220, 206, 206);
+    background-color: brown;
+    border: 2px solid brown;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 8px;
+    width: fit-content;
+}
+
 /* -- edit blog page -- */
 #editDiv{
     display: flex;

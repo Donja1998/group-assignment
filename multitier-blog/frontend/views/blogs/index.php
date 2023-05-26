@@ -6,7 +6,7 @@ Template::header("My Blogs");
 
 <h1>My Blogs </h1>
 
-<a href="<?= $this->home ?>/blogs/new">Create new</a>
+<a id="creatNew" href="<?= $this->home ?>/blogs/new">Create new</a>
 
 <div class="item-grid">
 
