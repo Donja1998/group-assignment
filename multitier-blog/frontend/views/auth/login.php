@@ -4,6 +4,7 @@ require_once __DIR__ . "/../../Template.php";
 Template::header("Login", $this->model["error"]);
 ?>
 
+<div id="logIn">
 <h1>Login</h1>
 
 <form action="<?= $this->home ?>/auth/login" method="post">
@@ -16,5 +17,6 @@ Template::header("Login", $this->model["error"]);
     Not registered? 
     <a href="<?= $this->home ?>/auth/register">Register user</a>
 </p>
+</div>
 
 <?php Template::footer(); ?>
