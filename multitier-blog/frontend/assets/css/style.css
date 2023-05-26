@@ -298,11 +298,7 @@ div.solo-item img{
     margin-bottom: 10%;
 }
 #logOut{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     margin: 0;
-
 }
 
 /* -- log in page -- */
