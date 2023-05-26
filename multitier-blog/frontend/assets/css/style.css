@@ -229,7 +229,8 @@ footer a {
 /* -- Articles Home -- */
 .h1-home {
   margin-left: 20%;
-  justify-content: center;
+  text-align: center;
+  display: block;
 }
 .home-articles {
     display: flex;
