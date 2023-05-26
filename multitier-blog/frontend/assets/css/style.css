@@ -315,7 +315,7 @@ div.solo-item img{
 /* -- profile page -- */
 
 .profile-page {
-    display: flex;;
+    display: flex;
     justify-content: center;
     max-width: 80%;
 }
