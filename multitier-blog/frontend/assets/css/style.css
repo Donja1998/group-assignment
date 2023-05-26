@@ -231,10 +231,12 @@ footer a {
     font-family: Helvetica, sans-serif;
     font-weight: 200;
     font-size: 28px;
+    color: brown;
     margin-top: 56px;
     margin-bottom: 0;
     text-align: center;
-  display: block;
+    display: block;
+
 }
 .home-articles {
     display: flex;
