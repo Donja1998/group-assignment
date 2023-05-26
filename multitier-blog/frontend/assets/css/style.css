@@ -317,9 +317,8 @@ div.solo-item img{
 /* -- My blogs page -- */
 #creatNew{
     text-decoration: none;
-    color: rgb(220, 206, 206);
-    background-color: brown;
-    border: 2px solid brown;
+    color: rgb(232, 226, 226);
+    background-color: #2B2B2B;
     border-radius: 8px;
     padding: 8px;
     margin-top: 8px;
