@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<h1>Edit <?= $this->model->blog_id ?></h1>
+<h1>Edit</h1>
 
 <form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/edit" method="post" enctype="multipart/form-data">
     <input type="text" name="title" value="<?= $this->model->title ?>" placeholder="title"> <br>
