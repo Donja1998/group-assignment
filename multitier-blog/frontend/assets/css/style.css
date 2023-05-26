@@ -330,8 +330,7 @@ div.solo-item img{
     border-radius: 8px;
     padding: 8px;
     margin-top: 8px;
-    width: 120px;
-    align-content: center;
+    width: max-content;
 }
 
 /* -- edit blog page -- */
