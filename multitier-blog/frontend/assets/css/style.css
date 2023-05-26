@@ -27,6 +27,7 @@ h1{
 }
 h2{
     color: brown;
+    font-weight: 400;
 }
 p{
     margin-bottom: 40px;
