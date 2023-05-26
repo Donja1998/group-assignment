@@ -126,10 +126,10 @@ nav a:hover {
 /* -- Main -- */
 
 main {
-    
-    margin: auto;
+    flex-grow: 1;
+    margin: 0;
     width: 100%;
-    height: fit-content;
+    height: 100%;
 
 }
 
