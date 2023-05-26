@@ -370,3 +370,8 @@ div.solo-item img{
     justify-content: center;
     align-items: center;
 }
+
+#blogContent{
+    margin-left: 40%;
+    margin-right: 40%;
+}
