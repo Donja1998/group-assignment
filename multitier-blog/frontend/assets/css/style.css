@@ -368,5 +368,11 @@ div.solo-item img{
 }
 /* -- show blog page -- */
 #blogPostImg{
-    width: 100%;
+    min-height: 300px;
+    height: 35vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
