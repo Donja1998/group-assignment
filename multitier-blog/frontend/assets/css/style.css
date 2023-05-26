@@ -240,10 +240,6 @@ footer a {
 
 
 /* -- Articles Home -- */
-.h2{
-    color: brown;
-}
-
 .h1-home {
     font-family: Helvetica, sans-serif;
     font-weight: 200;
@@ -319,7 +315,9 @@ div.solo-item img{
 /* -- profile page -- */
 
 .profile-page {
-    display: flex;;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     max-width: 80%;
+    align-items: center;
 }
