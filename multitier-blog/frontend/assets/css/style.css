@@ -321,8 +321,7 @@ div.solo-item img{
     margin-bottom: 10%;
 }
 
-#setProfilePic{
+#logOut{
     display: flex;
     flex-direction: row;
-    align-items: center;
 }

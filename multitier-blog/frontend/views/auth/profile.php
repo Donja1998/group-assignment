@@ -15,13 +15,11 @@ Template::header("Profile");
 
 <hr>
 
-<div id="setProfilePic">
 <h2>Set profile picture</h2>
 
 <?php if ($this->user->profile_pic_url) : ?>
     <img src="<?= $this->home . $this->user->profile_pic_url?>" alt="" width="100">
 <?php endif; ?>
-</div>
 
 
 <form action="<?= $this->home ?>/auth/profile_pic" method="post" enctype="multipart/form-data">
@@ -31,10 +29,11 @@ Template::header("Profile");
 
 <hr>
 
-
+<div id="logOut">
 <h2>Log out</h2>
 <form action="<?= $this->home ?>/auth/logout" method="post">
     <input type="submit" value="Log out" class="btn delete-btn">
 </form>
+</div>
 </div>
 <?php Template::footer(); ?>
