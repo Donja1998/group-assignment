@@ -23,7 +23,8 @@ img {
 #showBtn{
     text-decoration: none;
     color: brown;
-    border-radius: 2px;
+    border: 2px solid brown;
+    border-radius: 4px;
 }
 
 .btn {
