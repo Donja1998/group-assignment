@@ -126,7 +126,7 @@ nav a:hover {
 /* -- Main -- */
 
 main {
-    flex-grow: 1;
+    
     margin: auto;
     width: 100%;
     height: fit-content;
