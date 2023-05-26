@@ -319,8 +319,6 @@ article.item a{
     padding: 8px;
     margin-top: 8px;
     width: fit-content;
-    display: flex;
-    flex-direction: row;
 }
 
 
