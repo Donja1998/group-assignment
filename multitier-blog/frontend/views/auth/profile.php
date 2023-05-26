@@ -27,7 +27,6 @@ Template::header("Profile");
 </form>
 
 <div id="logOut">
-<h2>Log out:<br> </h2>
 <form action="<?= $this->home ?>/auth/logout" method="post">
     <input type="submit" value="Log out" class="btn delete-btn">
 </form>
