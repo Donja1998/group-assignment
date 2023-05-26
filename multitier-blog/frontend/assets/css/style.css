@@ -366,3 +366,7 @@ div.solo-item img{
     margin-top: 5%;
     margin-bottom: 10%;
 }
+/* -- show blog page -- */
+#blogPostImg{
+    width: 100%;
+}
