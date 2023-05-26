@@ -362,7 +362,7 @@ div.solo-item img{
 /* -- show blog page -- */
 #blogPostImg{
     width: 100%;
-    height: fit-content;
+    height: 20%;
     background-position: center;
     background-size: cover;
     display: flex;
