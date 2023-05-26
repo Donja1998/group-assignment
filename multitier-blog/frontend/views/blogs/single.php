@@ -26,7 +26,7 @@ Template::header($this->model->blog_id);
     $placeId = $this->model->place_id;
     $mapUrl = "https://www.google.com/maps/embed/v1/place?key=$apiKey&q=place_id:$placeId";
     ?>
-    <iframe src="<?= $mapUrl ?>" width="600" height="450"></iframe>
+    <iframe src="<?= $mapUrl ?>" width="100%" height="450"></iframe>
 
 <?php if ($this->user->user_role === "admin") : ?>
 
