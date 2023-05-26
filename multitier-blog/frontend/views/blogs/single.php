@@ -8,11 +8,11 @@ Template::header($this->model->blog_id);
 
 
 <?php if ($this->model->blog_pic_url) : ?>
-    <img src="<?= $this->home . $this->model->blog_pic_url ?>" alt="" width="100">
+    <img id="blogPostImg" src="<?= $this->home . $this->model->blog_pic_url ?>" alt="" width="100">
 <?php endif; ?>
 <h1><?= $this->model->title ?></h1>
 
-<img id="blogPostImg" src=" <?= $this->model->blog_pic_url?>" alt="">
+<img src=" <?= $this->model->blog_pic_url?>" alt="">
 
 <p>
     <?= $this->model->content ?>
