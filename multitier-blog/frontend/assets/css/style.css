@@ -240,6 +240,10 @@ footer a {
 
 
 /* -- Articles Home -- */
+.h2-home{
+    font-weight: 200;
+}
+
 .h1-home {
     font-family: Helvetica, sans-serif;
     font-weight: 200;
