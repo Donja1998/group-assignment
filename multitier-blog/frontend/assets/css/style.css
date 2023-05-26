@@ -317,7 +317,5 @@ div.solo-item img{
 .profile-page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    max-width: 80%;
     align-items: center;
 }
