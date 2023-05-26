@@ -15,6 +15,7 @@ Template::header("Profile");
 
 <h2>Set profile picture</h2>
 
+<div id="profileBtns">
 <?php if ($this->user->profile_pic_url) : ?>
     <img src="<?= $this->home . $this->user->profile_pic_url?>" alt="" width="100">
 <?php endif; ?>
@@ -30,6 +31,7 @@ Template::header("Profile");
 <form action="<?= $this->home ?>/auth/logout" method="post">
     <input type="submit" value="Log out" class="btn delete-btn">
 </form>
+</div>
 </div>
 </div>
 <?php Template::footer(); ?>
