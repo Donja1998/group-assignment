@@ -20,13 +20,16 @@ img {
     max-width: 100%;
 }
 
+p{
+    margin-bottom: 40px;
+}
+
 #showBtn{
     text-decoration: none;
     color: brown;
     border: 2px solid brown;
     border-radius: 8px;
     padding: 8px;
-    margin-top: 40px;
 }
 
 .btn {
@@ -285,10 +288,6 @@ article.item {
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid #e4e4e4;
-}
-
-article.item b {
-    padding-top: 5px;
 }
 
 article.item > div {
