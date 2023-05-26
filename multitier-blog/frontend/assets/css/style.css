@@ -7,9 +7,6 @@ html,
 body {
     margin: 0;
     padding: 0;
-}
-
-body {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -151,7 +148,6 @@ nav a:hover {
 }
 
 /* -- Main -- */
-
 main {
     flex: 1;
     margin: auto;
@@ -162,7 +158,6 @@ main {
 
 
 /* -- Footer -- */
-
 footer {
     background-color: #2B2B2B;
     color: #F2F2EF;
@@ -287,8 +282,6 @@ align-content: center;}
 
 
 /* -- Items -- */
-
-
 main > div ,
 .item-grid {
     display: flex;
@@ -330,6 +323,7 @@ div.solo-item{
 
 div.solo-item img{
     max-width: 420px;
+    margin: 0 auto 15px;
 }
 
 /* -- profile page -- */
