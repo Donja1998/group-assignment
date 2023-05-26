@@ -228,6 +228,7 @@ footer a {
 
 /* -- Articles Home -- */
 .h1-home {
+    font-weight: 100;
   text-align: center;
   display: block;
 }
