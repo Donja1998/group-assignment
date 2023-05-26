@@ -25,6 +25,8 @@ Template::header("My Blogs");
                     <b>User ID: </b>
                     <?= $blog->user_id ?>
                 </p>
+
+            <div id="editShowBtn">
             <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>/edit">Edit</a>
 
             <?php endif; ?>
@@ -32,6 +34,7 @@ Template::header("My Blogs");
 
 
             <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>">Show</a>
+            </div>
         </article>
 
     <?php endforeach; ?>
