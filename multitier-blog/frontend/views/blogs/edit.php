@@ -42,11 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <input type="file" name="blog_pic_url"  > <br>
     
     <input type="submit" value="Save" class="btn">
-</form>
-
-<form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/delete" method="post">
+    <form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/delete" method="post">
     <input type="submit" value="Delete" class="btn delete-btn">
 </form>
+</form>
+
+
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJedt2e6mhEqbBw9KX4AVazXiQeuswwoo&libraries=places"></script>
 <script>
