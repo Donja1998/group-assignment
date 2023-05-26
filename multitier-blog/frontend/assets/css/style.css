@@ -20,6 +20,17 @@ img {
     max-width: 100%;
 }
 
+h1{
+    font-family: Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 28px;
+    color: brown;
+    margin-top: 56px;
+    margin-bottom: 0;
+    text-align: center;
+    display: block;
+}
+
 p{
     margin-bottom: 40px;
 }
