@@ -324,6 +324,6 @@ div.solo-item img{
 #logOut{
     display: flex;
     flex-direction: row;
-    justify-content: space-between 24px;
-    
+    padding-left: 24px;  
+    padding-right: 24px;  
 }
