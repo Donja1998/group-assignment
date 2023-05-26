@@ -321,11 +321,6 @@ article.item a{
     width: fit-content;
 }
 
-#editShowBtn{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 /* -- Solo item -- */
 div.solo-item{
