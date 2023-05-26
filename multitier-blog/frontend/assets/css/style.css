@@ -20,7 +20,7 @@ img {
     max-width: 100%;
 }
 
-.showBtn{
+#showBtn{
     text-decoration: none;
     color: brown;
     border-radius: 2px;
