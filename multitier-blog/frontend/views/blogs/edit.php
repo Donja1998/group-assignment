@@ -13,6 +13,10 @@ foreach ($_SESSION as $key => $value) {
     }
 }
 
+
+$place_id = "";
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
    // Retrieve form data
    $place_id = $_POST["place_id"];

@@ -162,60 +162,66 @@ class BlogsController extends ControllerBase
 
     // Create a purchase with data from the URL and body
     private function createBlog()
-    {
-        $this->requireAuth();
-    
-        $blog = new BlogModel();
-    
-        // Get updated properties from the body
-        $blog->title = $this->body["title"];
-        $blog->content = $this->body["content"];
-        $blog->place_id = $this->body["place_id"];
-    
-        // Check if a file was uploaded for blog_pic_url
-        if (isset($_FILES['blog_pic_url']) && $_FILES['blog_pic_url']['error'] === UPLOAD_ERR_OK) {
-    
-            // Get the file name and extension
-            $filename = $_FILES['blog_pic_url']['name'];
-            $extension = pathinfo($filename, PATHINFO_EXTENSION);
-    
-            // Generate a unique file name
-            $unique_filename = uniqid() . '.' . $extension;
-    
-            // Set the upload directory and file path
-            $upload_directory = realpath(__DIR__ . "/../assets/img/blogs/");
-            $file_path = "$upload_directory/$unique_filename";
-    
-            // Move the uploaded file to the upload directory
-            $x = move_uploaded_file($_FILES['blog_pic_url']['tmp_name'], $file_path);
-    
-            // Get the URL path to the uploaded file
-            $url_path = '/assets/img/blogs/' . $unique_filename;
-    
-            // Set the blog_pic_url property
-            $blog->blog_pic_url = $url_path;
-        }
-    
-        // Admins can connect any user to the blog
-        if ($this->user->user_role === "admin") {
-            $blog->user_id = $this->body["user_id"];
-        }
-        // Regular users can only add blogs to themselves
-        else {
-            $blog->user_id = $this->user->user_id;
-        }
-    
-        // Save the blog
-        $success = BlogsServices::saveBlog($blog);
-    
-        // Redirect or show error based on response from business logic layer
-        if ($success) {
-            $this->redirect($this->home . "/blogs");
-        } else {
-            $this->error();
-        }
+{
+    $this->requireAuth();
+
+    $blog = new BlogModel();
+
+    // Get updated properties from the body
+    $blog->title = isset($this->body["title"]) ? $this->body["title"] : '';
+    $blog->content = isset($this->body["content"]) ? $this->body["content"] : '';
+    $blog->place_id = isset($this->body["place_id"]) ? $this->body["place_id"] : '';
+
+    // Check if the "content" value is empty
+    if (empty($blog->content)) {
+        // Handle the error, e.g., display an error message or redirect with an error flag
+        $this->error();
+        return;
     }
-    
+
+    // Check if a file was uploaded for blog_pic_url
+    if (isset($_FILES['blog_pic_url']) && $_FILES['blog_pic_url']['error'] === UPLOAD_ERR_OK) {
+
+        // Get the file name and extension
+        $filename = $_FILES['blog_pic_url']['name'];
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+        // Generate a unique file name
+        $unique_filename = uniqid() . '.' . $extension;
+
+        // Set the upload directory and file path
+        $upload_directory = realpath(__DIR__ . "/../assets/img/blogs/");
+        $file_path = "$upload_directory/$unique_filename";
+
+        // Move the uploaded file to the upload directory
+        $x = move_uploaded_file($_FILES['blog_pic_url']['tmp_name'], $file_path);
+
+        // Get the URL path to the uploaded file
+        $url_path = '/assets/img/blogs/' . $unique_filename;
+
+        // Set the blog_pic_url property
+        $blog->blog_pic_url = $url_path;
+    }
+
+    // Admins can connect any user to the blog
+    if ($this->user->user_role === "admin") {
+        $blog->user_id = isset($this->body["user_id"]) ? $this->body["user_id"] : null;
+    }
+    // Regular users can only add blogs to themselves
+    else {
+        $blog->user_id = $this->user->user_id;
+    }
+
+    // Save the blog
+    $success = BlogsServices::saveBlog($blog);
+
+    // Redirect or show error based on response from business logic layer
+    if ($success) {
+        $this->redirect($this->home . "/blogs");
+    } else {
+        $this->error();
+    }
+}
 
   // Update a purchase with data from the URL and body
   private function updateBlog()
@@ -226,93 +232,92 @@ class BlogsController extends ControllerBase
       $id = $this->path_parts[2];
   
       $existing_blog = BlogsServices::getBlogById($id);
-
-      foreach ($_SESSION as $key => $value) {
-        if ($value instanceof UserModel) {
-            $user_id = $value->user_id;
-            break; // Exit the loop since we found the user_id
-        }
-
-        if ($existing_blog->user_id !== $user_id) {
-            $this->requireAuth(["admin"]);
-        }
-        else{
+      $user_id = null; // Initialize the variable before the loop
   
-                // Get updated properties from the body
-                $blog->title = $this->body["title"];
-                $blog->content = $this->body["content"];
-                $blog->place_id = $this->body["place_id"];
-                $blog->user_id = $this->body["user_id"];
-            
-                // Check if a file was uploaded for blog_pic_url
-                if (isset($_FILES['blog_pic_url']) && $_FILES['blog_pic_url']['error'] === UPLOAD_ERR_OK) {
-            
-                    // Get the file name and extension
-                    $filename = $_FILES['blog_pic_url']['name'];
-                    $extension = pathinfo($filename, PATHINFO_EXTENSION);
-            
-                    // Generate a unique file name
-                    $unique_filename = uniqid() . '.' . $extension;
-            
-                    // Set the upload directory and file path
-                    $upload_directory = realpath(__DIR__ . "/../assets/img/blogs/");
-                    $file_path = "$upload_directory/$unique_filename";
-            
-                    // Move the uploaded file to the upload directory
-                    $x = move_uploaded_file($_FILES['blog_pic_url']['tmp_name'], $file_path);
-            
-                    // Get the URL path to the uploaded file
-                    $url_path = '/assets/img/blogs/' . $unique_filename;
-            
-                    // Set the blog_pic_url property
-                    $blog->blog_pic_url = $url_path;
-                } else {
-                    // If no file was uploaded, retain the existing blog_pic_url value
-                    $blog->blog_pic_url = $existing_blog->blog_pic_url;
-                }
-            
-                $success = BlogsServices::updateBlogsById($id, $blog);
-            
-                // Redirect or show error based on response from business logic layer
-                if ($success) {
-                    $this->redirect($this->home . "/blogs");
-                } else {
-                    $this->error();
-                }
-        }
-    }
-}
+      foreach ($_SESSION as $key => $value) {
+          if ($value instanceof UserModel) {
+              $user_id = $value->user_id;
+              break; // Exit the loop since we found the user_id
+          }
+      }
+  
+      if ($existing_blog->user_id !== $user_id) {
+          $this->requireAuth(["admin"]);
+      } else {
+  
+          // Get updated properties from the body
+          $blog->title = isset($this->body["title"]) ? $this->body["title"] : $existing_blog->title;
+          $blog->content = isset($this->body["content"]) ? $this->body["content"] : $existing_blog->content;
+          $blog->place_id = isset($this->body["place_id"]) ? $this->body["place_id"] : $existing_blog->place_id;
+          $blog->user_id = isset($this->body["user_id"]) ? $this->body["user_id"] : $existing_blog->user_id;
+  
+          // Check if a file was uploaded for blog_pic_url
+          if (isset($_FILES['blog_pic_url']) && $_FILES['blog_pic_url']['error'] === UPLOAD_ERR_OK) {
+  
+              // Get the file name and extension
+              $filename = $_FILES['blog_pic_url']['name'];
+              $extension = pathinfo($filename, PATHINFO_EXTENSION);
+  
+              // Generate a unique file name
+              $unique_filename = uniqid() . '.' . $extension;
+  
+              // Set the upload directory and file path
+              $upload_directory = realpath(__DIR__ . "/../assets/img/blogs/");
+              $file_path = "$upload_directory/$unique_filename";
+  
+              // Move the uploaded file to the upload directory
+              $x = move_uploaded_file($_FILES['blog_pic_url']['tmp_name'], $file_path);
+  
+              // Get the URL path to the uploaded file
+              $url_path = '/assets/img/blogs/' . $unique_filename;
+  
+              // Set the blog_pic_url property
+              $blog->blog_pic_url = $url_path;
+          } else {
+              // If no file was uploaded, retain the existing blog_pic_url value
+              $blog->blog_pic_url = $existing_blog->blog_pic_url;
+          }
+  
+          $success = BlogsServices::updateBlogsById($id, $blog);
+  
+          // Redirect or show error based on response from business logic layer
+          if ($success) {
+              $this->redirect($this->home . "/blogs");
+          } else {
+              $this->error();
+          }
+      }
+  }
   
 
     // Delete a purchase with data from the URL
     private function deleteBlog()
     {
-
         // Get ID from the URL
         $id = $this->path_parts[2];
-
+    
         $existing_blog = BlogsServices::getBlogById($id);
-
+        $user_id = null; // Initialize the variable before the loop
+    
         foreach ($_SESSION as $key => $value) {
             if ($value instanceof UserModel) {
                 $user_id = $value->user_id;
                 break; // Exit the loop since we found the user_id
             }
         }
-        
+    
         if ($existing_blog->user_id !== $user_id) {
-                $this->requireAuth(["admin"]);
+            $this->requireAuth(["admin"]);
         }
-        else{
-            // Delete the purchase
-            $success = BlogsServices::deleteBlogById($id);
-
-            // Redirect or show error based on response from business logic layer
-            if ($success) {
-                $this->redirect($this->home . "/blogs");
-            } else {
-                $this->error();
-            }
+    
+        // Delete the blog
+        $success = BlogsServices::deleteBlogById($id);
+    
+        // Redirect or show error based on response from the business logic layer
+        if ($success) {
+            $this->redirect($this->home . "/blogs");
+        } else {
+            $this->error();
         }
     }
-}
+}    

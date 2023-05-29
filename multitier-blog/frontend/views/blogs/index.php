@@ -11,35 +11,29 @@ Template::header("My Blogs");
 </div>
 
 <div class="item-grid">
-
     <?php foreach ($this->model as $blog) : ?>
-
         <article class="item">
             <div>
                 <b><?= $blog->title ?></b> <br>
                 <span>Content: <?= $blog->content ?></span> <br>
-                            </div>
-
+            </div>
 
             <?php if ($this->user->user_role === "admin") : ?>
-
                 <p>
                     <b>User ID: </b>
                     <?= $blog->user_id ?>
                 </p>
-
-            <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>/edit">Edit</a>
-
             <?php endif; ?>
-            <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>/edit">Edit</a>
 
+            <?php if ($this->user->user_role === "admin") : ?>
+                <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>/edit">Edit</a>
+            <?php else: ?>
+                <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>/edit">Edit</a>
+            <?php endif; ?>
 
             <a href="<?= $this->home ?>/blogs/<?= $blog->blog_id ?>">Show</a>
         </article>
-    
-
     <?php endforeach; ?>
-
 </div>
 
 <?php Template::footer(); ?>

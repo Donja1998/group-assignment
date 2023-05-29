@@ -80,15 +80,16 @@ class BlogsDatabase extends Database
      
     public function updateById($blog_id, BlogModel $blog)
     {
-        $query = "UPDATE blogs SET title=?, content=?, place_id=?, user_id=?, blog_pic_url=?  WHERE blog_id=?;";
-
+        $query = "UPDATE blogs SET title=?, content=?, place_id=?, user_id=?, blog_pic_url=?  WHERE blog_id=?";
+    
         $stmt = $this->conn->prepare($query);
-
-        $stmt->bind_param("sssisi", $blog->title, $blog->content, $blog->place_id, $blog->user_id, $blog->blog_pic_url, $blog_id);
-
+    
+        $stmt->bind_param("ssisii", $blog->title, $blog->content, $blog->place_id, $blog->user_id, $blog->blog_pic_url, $blog_id);
+    
         $success = $stmt->execute();
-
+    
         return $success;
+    
     }
 
     public function deleteById($blog_id)
