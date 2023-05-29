@@ -25,7 +25,7 @@ class APIRouter
             // Whenever someone calls "api/purchases" we 
             // will load the PurchasesAPI class
             "auth" => "AuthAPI",
-            "purchases" => "PurchasesAPI",
+            "blogs" => "BlogsAPI",
             "root" => "APIRoot"
         ];
 

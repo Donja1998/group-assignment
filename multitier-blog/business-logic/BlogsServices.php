@@ -30,9 +30,9 @@ class BlogsServices{
     public static function getBlogsByUser($user_id){
         $blogs_database = new BlogsDatabase();
 
-        $purchases = $blogs_database->getByUserId($user_id);
+        $blogs = $blogs_database->getByUserId($user_id);
 
-        return $purchases;
+        return $blogs;
     }
 
     

@@ -3,8 +3,15 @@ require_once __DIR__ . "/../../Template.php";
 
 Template::header("Edit " . $this->model->blog_id);
 
-$user_id = $this->model->user_id;
 
+$user_id = null;
+
+foreach ($_SESSION as $key => $value) {
+    if ($value instanceof UserModel) {
+        $user_id = $value->user_id;
+        break; // Exit the loop since we found the user_id
+    }
+}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
    // Retrieve form data
@@ -32,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <h1>Edit</h1>
 
 <form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/edit" method="post" enctype="multipart/form-data">
+
     <input type="text" name="title" value="<?= $this->model->title ?>" placeholder="title"> <br>
     <input type="text" name="content" value="<?= $this->model->content ?>" placeholder="content"> <br>
     <input type="text" name="location" id="location-input" placeholder="Location"> <br>
@@ -42,9 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <input type="file" name="blog_pic_url"  > <br>
     
     <input type="submit" value="Save" class="btn">
-    <form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/delete" method="post">
-    <input type="submit" value="Delete" class="btn delete-btn">
 </form>
+
+<form action="<?= $this->home ?>/blogs/<?= $this->model->blog_id ?>/delete" method="post">
+    <input type="submit" value="Delete" class="btn delete-btn">
 </form>
 
 

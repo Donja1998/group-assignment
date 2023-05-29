@@ -53,13 +53,13 @@ class BlogsAPI extends RestAPI
         $this->requireAuth();
 
         if ($this->user->user_role === "admin") {
-            $purchases = BlogsServices::getAllBlogs();
+            $blogs = BlogsServices::getAllBlogs();
         } else {
-            $purchases = BlogsServices::getBlogsByUser($this->user->user_id);
+            $blogs = BlogsServices::getBlogsByUser($this->user->user_id);
         }
 
 
-        $this->sendJson($purchases);
+        $this->sendJson($blogs);
     }
 
 
@@ -67,17 +67,17 @@ class BlogsAPI extends RestAPI
     {
         $this->requireAuth();
 
-        $purchase = BlogsServices::getBlogById($id);
+        $blog = BlogsServices::getBlogById($id);
 
-        if (!$purchase) {
+        if (!$blog) {
             $this->notFound();
         }
 
-        if ($this->user->user_role !== "admin" || $purchase->user_id !== $this->user->user_id) {
+        if ($this->user->user_role !== "admin" || $blog->user_id !== $this->user->user_id) {
             $this->forbidden();
         }
 
-        $this->sendJson($purchase);
+        $this->sendJson($blog);
     }
 
 
@@ -85,25 +85,25 @@ class BlogsAPI extends RestAPI
     {
         $this->requireAuth();
 
-        $purchase = new BlogModel();
+        $blog = new BlogModel();
 
-        $purchase->title = $this->body["title"];
-        $purchase->content = $this->body["content"];
-        $purchase->place_id = $this->body["place_id"];
-        $purchase->blog_pic_url = $this->body["blog_pic_url"];
+        $blog->title = $this->body["title"];
+        $blog->content = $this->body["content"];
+        $blog->place_id = $this->body["place_id"];
+        $blog->blog_pic_url = $this->body["blog_pic_url"];
 
 
         // Admins can connect any user to the purchase
         if ($this->user->user_role === "admin") {
-            $purchase->user_id = $this->body["user_id"];
+            $blog->user_id = $this->body["user_id"];
         }
 
         // Regular users can only add purchases to themself
         else {
-            $purchase->user_id = $this->user->user_id;
+            $blog->user_id = $this->user->user_id;
         }
 
-        $success = BlogsServices::saveBlog($purchase);
+        $success = BlogsServices::saveBlog($blog);
 
         if ($success) {
             $this->created();
